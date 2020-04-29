@@ -15,7 +15,7 @@ public class ItemAdapter extends BaseAdapter {
     LayoutInflater layoutInflater;
     Context mContext;
 
-    public ItemAdapter(Context context, List<Item> itemList){
+    ItemAdapter(Context context, List<Item> itemList){
         data = itemList;
         mContext = context;
         layoutInflater = LayoutInflater.from(mContext);
@@ -37,14 +37,15 @@ public class ItemAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View view = layoutInflater.inflate(R.layout.data_item,null);
-        TextView arr_time_tv = (TextView)view.findViewById(R.id.arr_time);
-        TextView dep_time_tv = (TextView)view.findViewById(R.id.dep_time);
-        TextView train_name_tv = (TextView)view.findViewById(R.id.train_name);
+    public View getView(int position, View view, ViewGroup parent) {
+        View convertView = view;
+        if(convertView == null) convertView = layoutInflater.inflate(R.layout.data_item,null);
+        TextView arr_time_tv = (TextView)convertView.findViewById(R.id.arr_time);
+        TextView dep_time_tv = (TextView)convertView.findViewById(R.id.dep_time);
+        TextView train_name_tv = (TextView)convertView.findViewById(R.id.train_name);
         arr_time_tv.setText(Util.parselDate(data.get(position).getArrplandtime()));
         dep_time_tv.setText(Util.parselDate(data.get(position).getDepplandtime()));
         train_name_tv.setText(data.get(position).getTraingradename());
-        return view;
+        return convertView;
     }
 }
