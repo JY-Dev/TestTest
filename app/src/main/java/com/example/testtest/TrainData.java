@@ -14,7 +14,7 @@ public class TrainData {
     @Path("body")
     private List<Item> itemList;
 
-    public List<Item> getItemList() {
+    List<Item> getItemList() {
         return itemList;
     }
 

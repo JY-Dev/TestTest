@@ -8,10 +8,10 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
-public class ApiClient {
+class ApiClient {
     private static Retrofit retrofitTrainInfo = null;
     private static String trainUrl = "http://openapi.tago.go.kr";
-    public static Retrofit getTrainInfoClient(){
+    static Retrofit getTrainInfoClient(){
         return (retrofitTrainInfo ==null) ? setRetrofit(retrofitTrainInfo, trainUrl) : retrofitTrainInfo;
     }
 

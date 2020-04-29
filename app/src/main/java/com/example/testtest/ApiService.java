@@ -4,7 +4,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public class ApiService {
+class ApiService {
     interface ApiInterface{
         @GET("/openapi/service/TrainInfoService/getStrtpntAlocFndTrainInfo?")
         Call<TrainData> getTrainInfo(@Query(value = "serviceKey" ,encoded = true) String serviceKey,
