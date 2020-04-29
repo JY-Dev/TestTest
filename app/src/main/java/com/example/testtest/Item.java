@@ -4,7 +4,7 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 @Root(name = "item", strict = false)
-public class Item {
+public class Item implements Comparable<Item>{
     @Element(name = "adultcharge")
     private String adultcharge;
     @Element(name = "arrplacename")
@@ -74,5 +74,10 @@ public class Item {
 
     public void setTrainno(String trainno) {
         this.trainno = trainno;
+    }
+
+    @Override
+    public int compareTo(Item item) {
+        return this.arrplandtime.compareTo(item.arrplandtime);
     }
 }

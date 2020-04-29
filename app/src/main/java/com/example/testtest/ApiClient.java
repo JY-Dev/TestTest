@@ -31,7 +31,7 @@ public class ApiClient {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
             @Override
             public void log(String message) {
-                System.out.println("check="+message);
+                System.out.println("request="+message);
             }
         });
 
