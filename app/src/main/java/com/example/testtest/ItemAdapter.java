@@ -1,17 +1,19 @@
 package com.example.testtest;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ItemAdapter extends BaseAdapter {
-    List<Item> data = new ArrayList<>();
+    List<Item> data;
     LayoutInflater layoutInflater;
     Context mContext;
 
@@ -43,9 +45,16 @@ public class ItemAdapter extends BaseAdapter {
         TextView arr_time_tv = (TextView)convertView.findViewById(R.id.arr_time);
         TextView dep_time_tv = (TextView)convertView.findViewById(R.id.dep_time);
         TextView train_name_tv = (TextView)convertView.findViewById(R.id.train_name);
+        LinearLayout item_back = (LinearLayout)convertView.findViewById(R.id.item_back);
         arr_time_tv.setText(Util.parselDate(data.get(position).getArrplandtime()));
         dep_time_tv.setText(Util.parselDate(data.get(position).getDepplandtime()));
         train_name_tv.setText(data.get(position).getTraingradename());
+
+        //지난 시간일 경우 배경색 gray
+        if (Util.lastTime(data.get(position).getDepplandtime())) item_back.setBackgroundColor(Color.GRAY);
+        else item_back.setBackgroundColor(Color.WHITE);
+
         return convertView;
     }
+
 }
